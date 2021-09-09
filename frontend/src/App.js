@@ -18,9 +18,9 @@ function App() {
       console.log(data)
     })
     .catch((err) =>{
-      console.log(errß)
+      console.log(err)
     })
-  
+  setWord('');
   }
   return (
     <div className="App">
