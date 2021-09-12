@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Button } from 'react-bootstrap';
-const ImageCard = ({image}) => {
+const ImageCard = ({image, deleteImage}) => {
     return (
         <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={image.urls.small} />
@@ -9,7 +9,7 @@ const ImageCard = ({image}) => {
                 <Card.Text>
                     {image.description || image.alt_description}
                 </Card.Text>
-                <Button variant="primary">View</Button>
+                <Button variant="primary" onClick = {() => deleteImage(image.id)}>Delete</Button>
             </Card.Body>
         </Card>
 
