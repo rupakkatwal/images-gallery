@@ -2,7 +2,7 @@ FROM node:16-bullseye
 
 WORKDIR /app
 
-EXPOSE 8080
+EXPOSE 3000
 
 COPY package.json package-lock.json ./
 
