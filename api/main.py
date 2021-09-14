@@ -10,7 +10,6 @@ DEBUG = bool(os.environ.get("DEBUG","True"))
 app = Flask(__name__)
 CORS(app)
 app.config['DEBUG'] = DEBUG
-
 @app.route("/new-image")
 def new_image():
     word = request.args.get("query")
