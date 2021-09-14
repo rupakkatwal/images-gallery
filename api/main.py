@@ -2,12 +2,13 @@ import requests
 import  os
 from flask import Flask,request
 from dotenv import load_dotenv
+from flask_cors import  CORS
 load_dotenv(dotenv_path="./.env.local")
 UNSPLASH_URL = "https://api.unsplash.com/photos/random/"
 UNSPLASH_KEY = os.environ.get("UNSPLASH_KEY","")
 DEBUG = bool(os.environ.get("DEBUG","True"))
 app = Flask(__name__)
-
+CORS(app)
 app.config['DEBUG'] = DEBUG
 
 @app.route("/new-image")

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import Welcome from './components/Welcome';
 
-const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY
+const API_URL = process.env.REACT_APP_API_URL || 'http://192.168.10.101:8080'
 
 function App() {
 
@@ -15,7 +15,7 @@ function App() {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     console.log(word);
-    fetch(`https://api.unsplash.com/photos/random/?query=${word}&client_id=${UNSPLASH_KEY}`)
+    fetch(`${API_URL}/new-image?query=${word}`)
       .then((res) => res.json())
       .then((data) => {
         setImages([{ ...data, title: word }, ...images]);
@@ -32,6 +32,7 @@ function App() {
   return (
     <div className="App">
       <Header title="Images Gallery" />
+      <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
       <Container className="mt-4">
         {images.length ? (<Row xs={1} md={2} lg={3}>
           {images.map((image, i) => (
@@ -42,7 +43,6 @@ function App() {
         </Row>) : (<Welcome/>)};
         
       </Container>
-      <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
 
 
     </div >
